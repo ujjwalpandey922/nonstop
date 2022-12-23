@@ -32,12 +32,12 @@ const Login = () => {
     <>
       <Container className="d-flex flex-column justify-content-start my-5 ">
         <Row className="mb-3 my-5 justify-content-md-center">
-          <Col className="text-center Title" xs lg="4">
+          <Col className="text-center Title login" xs lg="4">
             Log In
           </Col>
         </Row>
-        <Row className="justify-content-md-center">
-          <Col className="Title " xs lg="4"  >
+        <Row className="justify-content-md-center ">
+          <Col className="Title login p-2" xs lg="4"  >
             <Form>
               <Form.Group className="mb-2" controlId="Basicusername">
                 <Form.Label>User Name </Form.Label>
@@ -57,7 +57,7 @@ const Login = () => {
                   onChange={(e) => setPassword(e.target.value)}
                 />
                 <Button
-                  variant="outline-primary"
+                  variant="outline-light"
                   onClick={() => setShow(!show)}
                 >
                   {show ? "Hide" : "Show"}

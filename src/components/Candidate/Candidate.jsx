@@ -3,7 +3,8 @@ import { Col,  Row } from 'react-bootstrap';
 import {AiFillHome} from "react-icons/ai"
 import { useNavigate, useParams } from 'react-router-dom';
 import { useCandidateContext } from '../../context/candidateContext';
-import { format } from 'date-fns';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import FormInfo from '../Form/Form';
 import List from '../List/List'
 
@@ -27,12 +28,13 @@ const handleDelete = async()=>{
     const gotData= await res.json();
     console.log(gotData)
     getCandidateData();
+    toast.error("Candidate Deleted...");
      handleHome();
 }   
 const handleEdit=()=>{
     setOpenForm(!openForm)
 } 
-console.log(selectedCandidate.experience);
+console.log(selectedCandidate);
   return (
         
         <>
@@ -51,12 +53,15 @@ console.log(selectedCandidate.experience);
         <List/>
         </div>
         { !openForm && 
-        <div className="container p-2 m-5" style={{height:"max-content" ,backgroundColor:"red"}} >
+        <div className="container p-2 m-5 rounded" style={{height:"max-content" ,backgroundColor:"#40025878",color:"#c1d9e2"}} >
                 <Row className='d-flex'>
-                    <Col> 
+                    <Col md={4} className="align-self-center justify-content-center d-flex" > 
+                    
+
                             <img src={ selectedCandidate.profile_picture!==''?selectedCandidate.profile_picture:"https://cdn-icons-png.flaticon.com/512/0/93.png"} alt="img"
-                            style={{width:"40%" }} className="rounded-circle"
+                            style={{width:"40%" }} className="rounded-circle "
                             />
+                    
                     </Col>
                     <Col>
                         <div className="stack d-flex flex-column">
@@ -81,10 +86,10 @@ console.log(selectedCandidate.experience);
 
                         </div>
                     </Col>
-           
+                                        <hr />
                 </Row>
             <div className="education">
-                <h1>---EDUCATION----</h1>
+                <h1>----------EDUCATION----------------</h1>
                 {selectedCandidate.education.map((e,i)=>(
                 <React.Fragment key={i}>
                     <Row>
@@ -105,10 +110,13 @@ console.log(selectedCandidate.experience);
                     </Row>
                 </React.Fragment>
                 ))}               
+                <hr />
+               
+
             </div>
             
             <div className="skills">
-                <h1>---SKILLS----</h1>
+                <h1>--------------SKILLS------------------</h1>
                 {selectedCandidate.skills.map((e,i)=>(
                 <React.Fragment key={i}>
                     <Row>
@@ -121,9 +129,10 @@ console.log(selectedCandidate.experience);
                     </Row>
                 </React.Fragment>
                 ))}               
+                <hr />
             </div>
             <div className="experience">
-                <h1>---EXPERIENCE----</h1>
+                <h1>-----------EXPERIENCE---------------</h1>
                 {selectedCandidate.experience.map((e,i)=>(
                 <React.Fragment key={i}>
                     <Row>
@@ -156,7 +165,7 @@ console.log(selectedCandidate.experience);
                 </div>
         }
     </div>
-
+            <ToastContainer/>
     </>
   )
 }
