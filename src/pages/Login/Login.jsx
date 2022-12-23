@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
  import { ToastContainer, toast } from "react-toastify";
 import { Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
 import "react-toastify/dist/ReactToastify.css";
-import "./Login.css";
+import "./login.css";
 const Login = () => {
   const [show, setShow] = useState(false);
   const [name, setName] = useState("");
