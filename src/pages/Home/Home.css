@@ -1,0 +1,14 @@
+.candidateName{
+    padding: .5rem;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+.candidateName:hover{
+    background-color: rgb(51, 3, 81);
+    color: aliceblue;
+}
+
+.list{
+    min-width: 40%;
+}
